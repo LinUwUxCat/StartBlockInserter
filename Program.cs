@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using GBX.NET;
 using GBX.NET.LZO;
 using GBX.NET.Engines.Game;
@@ -315,6 +316,7 @@ namespace SBI
 
         static void Main(string[] args)
         {   
+
             GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
             if (args.Length < 1 || args[0] == "-h" || args[0] == "--help"){
                 Console.WriteLine("StartBlockInserter (SBI) v0.1\nUsage : \n./SBI FileName BlockToRemove\nOR\n./SBI FileName PathTotheBlock\n\nBlockToRemove is the block's name, and PathToTheBlock is the path to the block in-game, with the folders.\n\nExamples : \n./SBI SuperMap.Challenge.Gbx StadiumRamp\nOR\n./SBI SuperMap.Challenge.Gbx 2-3-8");
@@ -352,6 +354,10 @@ namespace SBI
                 } else {
                     Console.WriteLine("No blocks replaced - map was not saved.");
                 }
+            }
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+                Console.Write("Press any key to continue . . . ");
+                Console.ReadKey(true);
             }
         }
     }
